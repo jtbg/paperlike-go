@@ -1,8 +1,7 @@
-module github.com/leoluk/paperlike-go
+module github.com/jtbg/paperlike-go
 
-go 1.15
+go 1.18
 
-require (
-	cuelang.org/go v0.2.2 // indirect
-	golang.org/x/exp v0.0.0-20210220032938-85be41e4509f
-)
+replace github.com/leoluk/paperlike-go => github.com/jtbg/paperlike-go v0.0.0-20230420051259-5445d297ec33
+
+require golang.org/x/exp v0.0.0-20230419192730-864b3d6c5c2c

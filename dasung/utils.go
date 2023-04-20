@@ -5,6 +5,7 @@ import (
 	"errors"
 	"os/exec"
 	"strings"
+	"log"
 )
 
 func FindDasungI2CDevicePaths() ([]string, error) {
@@ -28,6 +29,7 @@ func FindDasungI2CDevicePaths() ([]string, error) {
 		}
 
 		if currentPath != "" && (strings.Contains(line, "DSC") || strings.Contains(line, "Dasung") || strings.Contains(line, "Paperlike")) {
+			log.Printf(line,"\n found at ", currentPath)
 			devicePaths = append(devicePaths, currentPath)
 			currentPath = ""
 		}
