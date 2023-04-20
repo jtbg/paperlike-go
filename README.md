@@ -40,26 +40,12 @@ Your local user must be able to write to the monitor's i2c bus.
 
 </details>
 
-<details>
-      <summary>
-            <h2>Find the i2c path for your Paperlike device</h2>
-      </summary>
-
-To determine the i2c path for your device, run the following command:
-
-    ddcutil detect --brief | grep -B 1 -Ei "dsc|dasung|paper"
-
-Make note of the I2C bus path (e.g. `/dev/i2c-3`).
-
-> In the case that that this command gives an ambiguous or empty result, you can read the full output by running `ddcutil detect --verbose`
-
-</details>
 
 # Usage:
 
-    Usage: paperlike-cli -i2c <i2c path> [<command> <value>]
+    Usage: paperlike-cli [-i2c <i2c path>] [<command> <value>]
 
-      Mandatory flags:
+      Optional flags:
             -i2c <path>       absolute path of the target i2c device
 
       Commands:
@@ -73,6 +59,22 @@ Make note of the I2C bus path (e.g. `/dev/i2c-3`).
       Examples:
             paperlike-cli -i2c /dev/i2c-3 -mode 1     set the display mode to M1 for the device at /dev/i2c-3
             paperlike-cli -i2c /dev/i2c-5 -clear      clear/refresh the screen for the device at /dev/i2c-5
+
+<details>
+      <summary>
+            <h2>Manually find the i2c path for your Paperlike device</h2>
+      </summary>
+
+To determine the i2c path for your device, run the following command:
+
+    ddcutil detect --brief | grep -B 1 -Ei "dsc|dasung|paper"
+
+Make note of the I2C bus path (e.g. `/dev/i2c-3`).
+
+> In the case that that this command gives an ambiguous or empty result, you can read the full output by running `ddcutil detect --verbose`
+
+</details>
+
 
 ## Display modes:
 
