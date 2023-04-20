@@ -37,6 +37,20 @@ func init() {
 }
 
 func main() {
+	flag.Parse()
+	
+	if *flagDevicePath == "" {
+		path, err := dasung.FindDasungI2CDevicePaths()
+		if err != nil {
+			log.Fatal("Failed to find Dasung Paperlike display:", err)
+		}
+		*flagDevicePath = path[0]
+	}
+
+	if !strings.HasPrefix(filepath.Clean(*flagDevicePath), "/dev/i2c-") {
+		log.Fatal("invalid device path (must start with /dev/i2c-)")
+	}
+
 	d, err := dasung.NewDasungControl(*flagDevicePath)
 	if err != nil {
 		log.Fatal(err)
