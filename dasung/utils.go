@@ -6,10 +6,15 @@ import (
 	"os/exec"
 	"strings"
 	"log"
+	"context"
+	"time"
 )
 
 func FindDasungI2CDevicePaths() ([]string, error) {
-	cmd := exec.Command("ddcutil", "detect", "--verbose")
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "ddcutil", "detect", "--verbose")
+	//cmd := exec.Command("ddcutil", "detect", "--verbose")
 	var out bytes.Buffer
 	cmd.Stdout = &out
 	err := cmd.Run()
