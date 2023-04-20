@@ -21,7 +21,7 @@ func FindDasungI2CDevicePaths() ([]string, error) {
 	output := out.String()
 	lines := strings.Split(output, "\n")
 	currentPath := ""
-	devicePaths := make([]string, 0)
+	devicePaths := make([]string, 0) 
 
 	for _, line := range lines {
 		if strings.Contains(line, "I2C bus:") {
@@ -29,7 +29,7 @@ func FindDasungI2CDevicePaths() ([]string, error) {
 		}
 
 		if currentPath != "" && (strings.Contains(line, "DSC") || strings.Contains(line, "Dasung") || strings.Contains(line, "Paperlike")) {
-			log.Printf(line,"\n found at ", currentPath)
+			log.Println(line,"\n found at ", currentPath)
 			devicePaths = append(devicePaths, currentPath)
 			currentPath = ""
 		}
