@@ -38,7 +38,7 @@ func init() {
 
 func main() {
 	flag.Parse()
-	
+
 	if *flagDevicePath == "" {
 		path, err := dasung.FindDasungI2CDevicePaths()
 		if err != nil {
