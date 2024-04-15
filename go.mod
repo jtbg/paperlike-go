@@ -1,4 +1,4 @@
-module github.com/jtbg/paperlike-go
+module github.com/leoluk/paperlike-go
 
 go 1.18
 
