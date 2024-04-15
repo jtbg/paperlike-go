@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"github.com/jtbg/paperlike-go/dasung"
+	"github.com/leoluk/paperlike-go/dasung"
 	"log"
 	"path/filepath"
 	"strings"
